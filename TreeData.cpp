@@ -24,7 +24,6 @@ File::File() { ID = lastId++ + 1; }
 File::File(CString sourse)
 {
 	strToFile(sourse);
-	
 }
 
 void File::strToFile(CString sourse)
@@ -93,7 +92,8 @@ CString File::getStrData()
 
 bool File::copyFile(CString *pathSours, CString *pathDestination, Flag f)
 {
-	if (f != Flag::CAT)	if (CopyFile(pathSours->GetBuffer(), pathDestination->GetBuffer(), false) != 0)return true;
+	if (f != Flag::CAT)
+		if (CopyFile(pathSours->GetBuffer(), pathDestination->GetBuffer(), false) != 0)return true;
 	else if (CopyFile(pathSours->GetBuffer(), pathDestination->GetBuffer(), true) != 0)return true;
 	auto error = GetLastError();
 	return false;
